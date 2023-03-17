@@ -1,0 +1,1 @@
+(()=>{const e=document.querySelector("#new-todo-input");document.querySelector(".btn.add-new").addEventListener("click",(()=>{console.log(e.value)}))})();
