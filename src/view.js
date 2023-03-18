@@ -1,5 +1,7 @@
 const View = (() => {
   const todoListContainer = document.querySelector("#todos-container");
+  const newTodoBtn = document.querySelector(".btn.add-new");
+  const modal = document.querySelector(".modal");
 
   function generateTodoDom(todo) {
     console.log(todo);
@@ -34,6 +36,24 @@ const View = (() => {
     todoList.forEach((todo) => renderTodo(generateTodoDom(todo)));
   }
 
+  function handleTodoModalView() {
+    // ----Open Modal----
+    newTodoBtn.addEventListener("click", () => {
+      // show new todo form
+      modal.classList.remove("hidden");
+    });
+
+    // ----Close Modal----
+    window.addEventListener("keydown", (e) => {
+      if (e.code === "Escape") modal.classList.add("hidden");
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target.classList.contains("modal")) modal.classList.add("hidden"); // Quick solution to close modal for dev purposes, probably a bad practice lol
+    });
+  }
+
+  handleTodoModalView();
   return { generateTodoDom, renderTodoList };
 })();
 
