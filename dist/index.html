@@ -16,8 +16,33 @@
         <div id="content-nav">
           <h3>Todo</h3>
           <button class="btn add-new">+ Add New</button>
-          <label for="new-todo-input">New Todo:</label>
-          <input type="text" id="new-todo-input" name="todo" />
+          <div class="modal hidden">
+            <div class="modal-content">
+              <form>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required />
+
+                <label for="description">Description:</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  required
+                ></textarea>
+
+                <label for="due-date">Due Date:</label>
+                <input type="date" id="due-date" name="due-date" required />
+
+                <label for="priority">Priority:</label>
+                <select id="priority" name="priority">
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
         </div>
         <div id="todos-container"></div>
       </div>
