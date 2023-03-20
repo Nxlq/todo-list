@@ -8,7 +8,6 @@ const View = (() => {
   const todoFormDueDateInput = document.getElementById("due-date");
   const todoFormPriorityInput = document.getElementById("priority");
   const btnSubmitTodoForm = document.getElementById("btn-submit-todo");
-  const todosContainer = document.getElementById("todos-container");
 
   function generateTodoDom(todo) {
     const todoContainer = document.createElement("div");
