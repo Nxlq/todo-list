@@ -1,3 +1,12 @@
+:root {
+  box-sizing: border-box;
+}
+
+#content-nav {
+  text-align: center;
+  padding: 40px 0px;
+}
+
 .hidden {
   display: none;
 }
@@ -66,4 +75,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   right: 0;
   bottom: 4px;
   color: #888;
+}
+
+.todos-nav {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.todos-nav span {
+  padding: 15px;
+  border: solid 2px rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+.todos-nav span:hover {
+  border-bottom: solid 2px rgb(0, 140, 255);
 }
