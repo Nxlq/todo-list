@@ -93,7 +93,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .todos-nav span:hover {
-  border-bottom: solid 2px rgb(0, 140, 255);
+  box-shadow: 2px 2px 1px 1px rgba(0, 0, 255, 0.2);
 }
 
 /* todos container and todos */
@@ -104,8 +104,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 15px;
 }
 
+.todo-list-headings {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .todo-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   border: solid 2px black;
   border-radius: 10px;
