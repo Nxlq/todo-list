@@ -5,17 +5,18 @@ const Model = (() => {
     return Math.floor(Math.random() * 10000);
   }
 
-  function createTodo(title, description, dueDate, priority) {
+  function createTodoObj(todoFormInputsObj) {
     return {
-      title,
-      description,
-      dueDate,
-      priority,
+      title: todoFormInputsObj.title,
+      description: todoFormInputsObj.description,
+      dueDate: todoFormInputsObj.dueDate,
+      priority: todoFormInputsObj.priority,
       id: generateId(),
     };
   }
 
-  function addTodo(todo) {
+  function addTodo(todoFormInputValues) {
+    const todo = createTodoObj(todoFormInputValues);
     todoList.push(todo);
   }
 
@@ -31,7 +32,7 @@ const Model = (() => {
     return todoList;
   }
 
-  return { createTodo, addTodo, removeTodo, getTodoList };
+  return { addTodo, removeTodo, getTodoList };
 })();
 
 export default Model;

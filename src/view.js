@@ -2,9 +2,14 @@ const View = (() => {
   const todoListContainer = document.querySelector("#todos-container");
   const newTodoBtn = document.querySelector(".btn.add-new");
   const modal = document.querySelector(".modal");
+  const newTodoForm = document.getElementById("new-todo-form");
+  const todoFormTitleInput = document.getElementById("title");
+  const todoFromDescriptionInput = document.getElementById("description");
+  const todoFormDueDateInput = document.getElementById("due-date");
+  const todoFormPriorityInput = document.getElementById("priority");
+  const btnSubmitTodoForm = document.getElementById("btn-submit-todo");
 
   function generateTodoDom(todo) {
-    console.log(todo);
     const todoContainer = document.createElement("div");
     todoContainer.classList.add("todo-container");
 
@@ -28,6 +33,7 @@ const View = (() => {
     return todoContainer;
   }
 
+  // just a helper function for rendering the todolist
   function renderTodo(todo) {
     todoListContainer.appendChild(todo);
   }
@@ -48,13 +54,31 @@ const View = (() => {
       if (e.code === "Escape") modal.classList.add("hidden");
     });
 
-    window.addEventListener("click", (e) => {
+    window.addEventListener("mousedown", (e) => {
       if (e.target.classList.contains("modal")) modal.classList.add("hidden"); // Quick solution to close modal for dev purposes, probably a bad practice lol
+    });
+
+    btnSubmitTodoForm.addEventListener("click", () => {
+      // for dev convenience
+      modal.classList.add("hidden");
     });
   }
 
+  function getTodoFormValues() {
+    return {
+      title: todoFormTitleInput.value,
+      description: todoFromDescriptionInput.value,
+      dueDate: todoFormDueDateInput.value,
+      priority: todoFormPriorityInput.value,
+    };
+  }
+
   handleTodoModalView();
-  return { generateTodoDom, renderTodoList };
+  return {
+    renderTodoList,
+    getTodoFormValues,
+    newTodoForm,
+  };
 })();
 
 export default View;
