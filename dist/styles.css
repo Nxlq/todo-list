@@ -73,17 +73,6 @@ button[type="submit"]:hover {
   background-color: #3e8e41;
 }
 
-input[type="date"]::-webkit-inner-spin-button {
-  display: none;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  position: absolute;
-  right: 0;
-  bottom: 4px;
-  color: #888;
-}
-
 .todos-nav {
   display: flex;
   gap: 30px;

@@ -18,7 +18,7 @@
           <button class="btn add-new">+ Add New</button>
           <div class="modal hidden">
             <div class="modal-content">
-              <form>
+              <form id="new-todo-form">
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" required />
 
@@ -30,7 +30,7 @@
                 ></textarea>
 
                 <label for="due-date">Due Date:</label>
-                <input type="date" id="due-date" name="due-date" required />
+                <input type="date" id="due-date" name="due-date" />
 
                 <label for="priority">Priority:</label>
                 <select id="priority" name="priority">
@@ -39,7 +39,7 @@
                   <option value="low">Low</option>
                 </select>
 
-                <button type="submit">Submit</button>
+                <button type="submit" id="btn-submit-todo">Submit</button>
               </form>
             </div>
           </div>
@@ -49,7 +49,14 @@
           <span>In progress</span>
           <span>Completed</span>
         </div>
-        <div id="todos-container"></div>
+        <div id="todos-container">
+          <div class="todo-list-headings">
+            <h3>Title:</h3>
+            <h3>Description:</h3>
+            <h3>Due Date:</h3>
+            <h3>Priority:</h3>
+          </div>
+        </div>
       </div>
     </main>
     <footer></footer>
