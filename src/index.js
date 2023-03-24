@@ -14,9 +14,24 @@ import View from "./view";
 //   "12/2/97",
 //   "high"
 // );
-View.renderTodoList(Model.getTodoList());
+
+const Controller = (() => {
+  window.addEventListener("DOMContentLoaded", () => {
+    Model.addProject("default");
+
+    // calling these methods are just for dev convenience
+    Model.getProjects();
+    Model.getCurrentProject();
+    Model.getCurrentTodoList();
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    View.renderTodoList(Model.getCurrentTodoList());
+  });
+})();
+
 View.newTodoForm.addEventListener("submit", (e) => {
   e.preventDefault();
   Model.addTodo(View.getTodoFormValues());
-  View.renderTodoList(Model.getTodoList());
+  View.renderTodoList(Model.getCurrentTodoList());
+  Model.getProjects();
 });
