@@ -8,6 +8,11 @@ const View = (() => {
   const todoFormDueDateInput = document.getElementById("due-date");
   const todoFormPriorityInput = document.getElementById("priority");
   const btnSubmitTodoForm = document.getElementById("btn-submit-todo");
+  const newProjectForm = document.getElementById("new-project-form");
+  const btnNewProject = document.getElementById("btn-new-project");
+  const newProjectModal = document.querySelector(".project-modal");
+  const btnSubmitNewProject = document.getElementById("btn-submit-project");
+  const newProjectFormTitleInput = document.getElementById("project-title");
 
   function generateTodoDom(todo) {
     const todoContainer = document.createElement("div");
@@ -45,7 +50,7 @@ const View = (() => {
     todoList.forEach((todo) => renderTodo(generateTodoDom(todo)));
   }
 
-  function handleTodoModalView() {
+  function handleNewTodoModalView() {
     // ----Open Modal----
     newTodoBtn.addEventListener("click", () => {
       // show new todo form
@@ -58,12 +63,36 @@ const View = (() => {
     });
 
     window.addEventListener("mousedown", (e) => {
-      if (e.target.classList.contains("modal")) modal.classList.add("hidden"); // Quick solution to close modal for dev purposes, probably a bad practice lol
+      if (e.target.classList.contains("modal")) {
+        modal.classList.add("hidden"); // Quick solution to close modal for dev purposes, probably not the best lol
+      }
     });
 
     btnSubmitTodoForm.addEventListener("click", () => {
       // for dev convenience
       modal.classList.add("hidden");
+    });
+  }
+
+  function handleNewProjectModalView() {
+    // ----Open Modal----
+    btnNewProject.addEventListener("click", () => {
+      newProjectModal.classList.remove("hidden");
+    });
+
+    // ----Close Modal----
+    window.addEventListener("keydown", (e) => {
+      if (e.code === "Escape") newProjectModal.classList.add("hidden");
+    });
+
+    window.addEventListener("mousedown", (e) => {
+      if (e.target.classList.contains("modal"))
+        newProjectModal.classList.add("hidden"); // Quick solution to close modal for dev purposes, probably a bad practice lol
+    });
+
+    btnSubmitNewProject.addEventListener("click", () => {
+      // for dev convenience
+      newProjectModal.classList.add("hidden");
     });
   }
 
@@ -76,11 +105,19 @@ const View = (() => {
     };
   }
 
-  handleTodoModalView();
+  function getNewProjectTitle() {
+    console.log(newProjectFormTitleInput.value);
+    return newProjectFormTitleInput.value;
+  }
+
+  handleNewTodoModalView();
+  handleNewProjectModalView();
   return {
     renderTodoList,
     getTodoFormValues,
     newTodoForm,
+    newProjectForm,
+    getNewProjectTitle,
   };
 })();
 
