@@ -29,9 +29,20 @@ const Controller = (() => {
   });
 })();
 
+// Handling when the user submits a new todo
 View.newTodoForm.addEventListener("submit", (e) => {
   e.preventDefault();
   Model.addTodo(View.getTodoFormValues());
   View.renderTodoList(Model.getCurrentTodoList());
-  Model.getProjects();
+
+  View.newTodoForm.reset(); // init form at the end of the submit event (there is probably a better way to do this but hey this works for the sake of this project)
+});
+
+// Handling when the user submits a new project
+View.newProjectForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log(View.getNewProjectTitle());
+  Model.addProject(View.getNewProjectTitle());
+
+  View.newProjectForm.reset(); // init form at the end of the submit event (there is probably a better way to do this but hey this works for the sake of this project)
 });
