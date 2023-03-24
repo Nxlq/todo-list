@@ -13,6 +13,7 @@ const View = (() => {
   const newProjectModal = document.querySelector(".project-modal");
   const btnSubmitNewProject = document.getElementById("btn-submit-project");
   const newProjectFormTitleInput = document.getElementById("project-title");
+  const todosNav = document.querySelector(".todos-nav");
 
   function generateTodoDom(todo) {
     const todoContainer = document.createElement("div");
@@ -106,18 +107,29 @@ const View = (() => {
   }
 
   function getNewProjectTitle() {
-    console.log(newProjectFormTitleInput.value);
     return newProjectFormTitleInput.value;
+  }
+
+  function generateNewProjectDom(newProjectTitle) {
+    const span = document.createElement("span");
+    span.textContent = newProjectTitle;
+    return span;
+  }
+
+  function appendNewProject(newProjectTitle) {
+    todosNav.append(generateNewProjectDom(newProjectTitle));
   }
 
   handleNewTodoModalView();
   handleNewProjectModalView();
+  console.log(todosNav);
   return {
     renderTodoList,
     getTodoFormValues,
     newTodoForm,
     newProjectForm,
     getNewProjectTitle,
+    appendNewProject,
   };
 })();
 

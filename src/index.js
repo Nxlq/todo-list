@@ -41,8 +41,8 @@ View.newTodoForm.addEventListener("submit", (e) => {
 // Handling when the user submits a new project
 View.newProjectForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(View.getNewProjectTitle());
   Model.addProject(View.getNewProjectTitle());
+  View.appendNewProject(View.getNewProjectTitle());
 
   View.newProjectForm.reset(); // init form at the end of the submit event (there is probably a better way to do this but hey this works for the sake of this project)
 });
