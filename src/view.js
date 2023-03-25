@@ -113,6 +113,7 @@ const View = (() => {
   function generateNewProjectDom(newProjectTitle) {
     const span = document.createElement("span");
     span.textContent = newProjectTitle;
+    span.setAttribute("data-project-title", newProjectTitle);
     return span;
   }
 
@@ -130,6 +131,7 @@ const View = (() => {
     newProjectForm,
     getNewProjectTitle,
     appendNewProject,
+    todosNav,
   };
 })();
 
