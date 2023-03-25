@@ -43,6 +43,11 @@ View.newProjectForm.addEventListener("submit", (e) => {
   e.preventDefault();
   Model.addProject(View.getNewProjectTitle());
   View.appendNewProject(View.getNewProjectTitle());
+  View.todosNav.lastElementChild.addEventListener("click", (e) => {
+    console.log(e.target.dataset.projectTitle);
+    Model.setCurrentProject(e.target.dataset.projectTitle);
+    View.renderTodoList(Model.getCurrentTodoList());
+  });
 
   View.newProjectForm.reset(); // init form at the end of the submit event (there is probably a better way to do this but hey this works for the sake of this project)
 });
