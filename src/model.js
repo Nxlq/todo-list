@@ -1,6 +1,6 @@
 const Model = (() => {
   let currentProject = "default";
-  const projects = {};
+  const projects = { default: { todoList: [] } };
 
   function projectFactory() {
     const todoList = [];
